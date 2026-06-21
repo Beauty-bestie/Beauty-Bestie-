@@ -39,7 +39,6 @@
             font-family: 'Pacifico', cursive;
         }
 
-        /* 🌸 NAV BAR */
         .nav {
             position: fixed;
             top: 0;
@@ -102,8 +101,6 @@
             justify-content: flex-start;
             align-items: center;
             padding-top: 80px;
-
-            /* 🔥 FIX so nav doesn't cover titles */
             scroll-margin-top: 90px;
         }
 
@@ -118,7 +115,6 @@
             opacity: 0.85;
         }
 
-        /* 💖 HACK CARD */
         .hack-card {
             background: rgba(255, 255, 255, 0.85);
             max-width: 800px;
@@ -144,6 +140,10 @@
             font-size: 22px;
             line-height: 1.5;
         }
+
+        input, textarea, select {
+            font-family: inherit;
+        }
     </style>
 </head>
 
@@ -158,6 +158,7 @@
         <a href="#fashion">Fashion</a>
         <a href="#nails">Nails</a>
         <a href="#extra">More</a>
+        <a href="#comments">Comments</a>
     </div>
 
     <!-- HOME -->
@@ -190,10 +191,9 @@
             <div class="hack-title">🥒 Cucumber Eye De-Puff Hack</div>
             <div class="hack-content">
                 Take a fresh cucumber and blend or grate it into a soft paste.
-                Put it into a clean lipstick case or small container and chill it in the fridge.
+                Put it into a clean container and chill it in the fridge.
 
-                When cold, apply it gently under your eyes.
-                The cooling effect reduces puffiness and helps refresh tired eyes 💕
+                Apply under your eyes for a cooling de-puff effect 💕
             </div>
         </div>
     </section>
@@ -226,15 +226,68 @@
         <p>Add any extra beauty hacks you'd like to share here!</p>
     </section>
 
-    <!-- JS -->
+    <!-- COMMENTS -->
+    <section class="page" id="comments">
+        <h2>💬 Comments & Feedback 💬</h2>
+        <div class="click-hint">Tell me what you think + rate the site 💕</div>
+
+        <div class="hack-card">
+
+            <input id="name" placeholder="Your name"
+                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;">
+
+            <select id="rating"
+                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;">
+                <option value="5">⭐⭐⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="1">⭐</option>
+            </select>
+
+            <textarea id="comment" rows="5" placeholder="Write your feedback..."
+                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;"></textarea>
+
+            <button onclick="submitFeedback()"
+                style="padding:10px 20px; border:none; border-radius:12px; background:#ffb6c1; cursor:pointer;">
+                Submit 💕
+            </button>
+
+            <div id="output" style="margin-top:15px;"></div>
+
+        </div>
+    </section>
+
     <script>
         function toggleHack(card) {
             const content = card.querySelector(".hack-content");
-            content.style.display = (content.style.display === "block") ? "none" : "block";
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+
+        function submitFeedback() {
+            const name = document.getElementById("name").value;
+            const rating = document.getElementById("rating").value;
+            const comment = document.getElementById("comment").value;
+
+            const output = document.getElementById("output");
+
+            if (!name || !comment) {
+                output.innerHTML = "⚠️ Please fill in all fields!";
+                return;
+            }
+
+            output.innerHTML = `
+                <strong>Thanks ${name}! 💕</strong><br>
+                Rating: ${"⭐".repeat(rating)}<br>
+                "${comment}"
+            `;
+
+            document.getElementById("name").value = "";
+            document.getElementById("comment").value = "";
+            document.getElementById("rating").value = "5";
         }
     </script>
 
 </body>
 </html>
- 
 
