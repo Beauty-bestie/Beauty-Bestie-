@@ -164,15 +164,11 @@
     <!-- HOME -->
     <section class="page" id="home">
         <h1>Beauty Bestie 💕</h1>
-
         <p>
             Hi my name is Willow!! I love makeup, skincare, clothes and everything beauty 💕
             This website is full of fun, cheap beauty hacks you can try at home!
         </p>
-
-        <div class="scroll-message">
-            ⬇ Scroll down to discover beauty hacks 💕
-        </div>
+        <div class="scroll-message">⬇ Scroll down to discover beauty hacks 💕</div>
     </section>
 
     <!-- MAKEUP -->
@@ -185,15 +181,11 @@
     <!-- SKINCARE -->
     <section class="page" id="skincare">
         <h2>🧴 Skincare 🧴</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
 
         <div class="hack-card" onclick="toggleHack(this)">
             <div class="hack-title">🥒 Cucumber Eye De-Puff Hack</div>
             <div class="hack-content">
-                Take a fresh cucumber and blend or grate it into a soft paste.
-                Put it into a clean container and chill it in the fridge.
-
-                Apply under your eyes for a cooling de-puff effect 💕
+                Take a cucumber, blend it, chill it, and apply under your eyes for a cooling effect 💕
             </div>
         </div>
     </section>
@@ -201,29 +193,25 @@
     <!-- HAIR -->
     <section class="page" id="hair">
         <h2>💇‍♀️ Haircare 💇‍♀️</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
-        <p>Share your haircare tips and hacks here!</p>
+        <p>Share your haircare tips here!</p>
     </section>
 
     <!-- FASHION -->
     <section class="page" id="fashion">
         <h2>👗 Fashion 👗</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
-        <p>Add clothing ideas, outfit inspiration and fashion hacks here!</p>
+        <p>Add outfit ideas here!</p>
     </section>
 
     <!-- NAILS -->
     <section class="page" id="nails">
         <h2>💅 Nails 💅</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
-        <p>Add your nail ideas and hacks here!</p>
+        <p>Add nail ideas here!</p>
     </section>
 
     <!-- EXTRA -->
     <section class="page" id="extra">
         <h2>✨ More Beauty Tips ✨</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
-        <p>Add any extra beauty hacks you'd like to share here!</p>
+        <p>Add extra hacks here!</p>
     </section>
 
     <!-- COMMENTS -->
@@ -264,16 +252,40 @@
             content.style.display = content.style.display === "block" ? "none" : "block";
         }
 
+        // ✅ MODERATION FILTER ADDED HERE
         function submitFeedback() {
-            const name = document.getElementById("name").value;
+            const name = document.getElementById("name").value.trim();
             const rating = document.getElementById("rating").value;
-            const comment = document.getElementById("comment").value;
-
+            const comment = document.getElementById("comment").value.trim();
             const output = document.getElementById("output");
 
             if (!name || !comment) {
                 output.innerHTML = "⚠️ Please fill in all fields!";
                 return;
+            }
+
+            const bannedWords = [
+                "hate",
+                "stupid",
+                "idiot",
+                "ugly",
+                "trash",
+                "awful",
+                "worst",
+                "kill",
+                "die"
+            ];
+
+            const lowerComment = comment.toLowerCase();
+
+            for (let word of bannedWords) {
+                if (lowerComment.includes(word)) {
+                    output.innerHTML = `
+                        ⚠️ Your comment was blocked because it violates community guidelines 💕
+                        <br>Please be kind and respectful.
+                    `;
+                    return;
+                }
             }
 
             output.innerHTML = `
