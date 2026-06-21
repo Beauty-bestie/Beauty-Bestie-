@@ -121,28 +121,7 @@
             margin-top: 20px;
             padding: 20px;
             border-radius: 25px;
-            cursor: pointer;
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease;
-        }
-
-        .hack-card:hover {
-            transform: scale(1.03);
-        }
-
-        .hack-title {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .hack-content {
-            display: none;
-            font-size: 22px;
-            line-height: 1.5;
-        }
-
-        input, textarea, select {
-            font-family: inherit;
         }
     </style>
 </head>
@@ -174,7 +153,6 @@
     <!-- MAKEUP -->
     <section class="page" id="makeup">
         <h2>💄 Makeup Hacks 💄</h2>
-        <div class="click-hint">⬇ Click on the cards below!</div>
         <p>Write all of your amazing makeup hacks here!</p>
     </section>
 
@@ -182,11 +160,8 @@
     <section class="page" id="skincare">
         <h2>🧴 Skincare 🧴</h2>
 
-        <div class="hack-card" onclick="toggleHack(this)">
-            <div class="hack-title">🥒 Cucumber Eye De-Puff Hack</div>
-            <div class="hack-content">
-                Take a cucumber, blend it, chill it, and apply under your eyes for a cooling effect 💕
-            </div>
+        <div class="hack-card">
+            🥒 Cucumber eye de-puff hack: chill blended cucumber and apply under eyes 💕
         </div>
     </section>
 
@@ -199,107 +174,57 @@
     <!-- FASHION -->
     <section class="page" id="fashion">
         <h2>👗 Fashion 👗</h2>
-        <p>Add outfit ideas here!</p>
+        <p>Outfit ideas and fashion hacks here!</p>
     </section>
 
     <!-- NAILS -->
     <section class="page" id="nails">
         <h2>💅 Nails 💅</h2>
-        <p>Add nail ideas here!</p>
+        <p>Nail ideas here!</p>
     </section>
 
     <!-- EXTRA -->
     <section class="page" id="extra">
         <h2>✨ More Beauty Tips ✨</h2>
-        <p>Add extra hacks here!</p>
+        <p>Extra hacks here!</p>
     </section>
 
-    <!-- COMMENTS -->
+    <!-- COMMENTS (FORMS PREE) -->
     <section class="page" id="comments">
         <h2>💬 Comments & Feedback 💬</h2>
-        <div class="click-hint">Tell me what you think + rate the site 💕</div>
+        <div class="click-hint">Send your feedback 💕</div>
 
         <div class="hack-card">
 
-            <input id="name" placeholder="Your name"
-                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;">
+            <form action="https://formspree.io/f/mvzjpwrd" method="POST">
 
-            <select id="rating"
-                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;">
-                <option value="5">⭐⭐⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="1">⭐</option>
-            </select>
+                <input name="name" placeholder="Your name"
+                    style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;"
+                    required>
 
-            <textarea id="comment" rows="5" placeholder="Write your feedback..."
-                style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;"></textarea>
+                <select name="rating"
+                    style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;"
+                    required>
+                    <option value="5">⭐⭐⭐⭐⭐ Amazing</option>
+                    <option value="4">⭐⭐⭐⭐ Great</option>
+                    <option value="3">⭐⭐⭐ Good</option>
+                    <option value="2">⭐⭐ Okay</option>
+                    <option value="1">⭐ Needs improvement</option>
+                </select>
 
-            <button onclick="submitFeedback()"
-                style="padding:10px 20px; border:none; border-radius:12px; background:#ffb6c1; cursor:pointer;">
-                Submit 💕
-            </button>
+                <textarea name="comment" rows="5" placeholder="Write your feedback..."
+                    style="width:100%; padding:10px; border-radius:10px; margin-bottom:10px; border:none;"
+                    required></textarea>
 
-            <div id="output" style="margin-top:15px;"></div>
+                <button type="submit"
+                    style="padding:10px 20px; border:none; border-radius:12px; background:#ffb6c1; cursor:pointer;">
+                    Send 💕
+                </button>
+
+            </form>
 
         </div>
     </section>
 
-    <script>
-        function toggleHack(card) {
-            const content = card.querySelector(".hack-content");
-            content.style.display = content.style.display === "block" ? "none" : "block";
-        }
-
-        // ✅ MODERATION FILTER ADDED HERE
-        function submitFeedback() {
-            const name = document.getElementById("name").value.trim();
-            const rating = document.getElementById("rating").value;
-            const comment = document.getElementById("comment").value.trim();
-            const output = document.getElementById("output");
-
-            if (!name || !comment) {
-                output.innerHTML = "⚠️ Please fill in all fields!";
-                return;
-            }
-
-            const bannedWords = [
-                "hate",
-                "stupid",
-                "idiot",
-                "ugly",
-                "trash",
-                "awful",
-                "worst",
-                "kill",
-                "die"
-            ];
-
-            const lowerComment = comment.toLowerCase();
-
-            for (let word of bannedWords) {
-                if (lowerComment.includes(word)) {
-                    output.innerHTML = `
-                        ⚠️ Your comment was blocked because it violates community guidelines 💕
-                        <br>Please be kind and respectful.
-                    `;
-                    return;
-                }
-            }
-
-            output.innerHTML = `
-                <strong>Thanks ${name}! 💕</strong><br>
-                Rating: ${"⭐".repeat(rating)}<br>
-                "${comment}"
-            `;
-
-            document.getElementById("name").value = "";
-            document.getElementById("comment").value = "";
-            document.getElementById("rating").value = "5";
-        }
-    </script>
-
 </body>
 </html>
-
