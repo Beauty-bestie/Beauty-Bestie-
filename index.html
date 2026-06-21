@@ -36,10 +36,10 @@
             background-attachment: fixed;
             min-height: 100vh;
             text-align: center;
+            font-family: 'Pacifico', cursive;
         }
 
         h1 {
-            font-family: 'Pacifico', cursive;
             font-size: 70px;
             color: black;
             margin-top: 60px;
@@ -47,22 +47,18 @@
         }
 
         p {
-            font-family: 'Pacifico', cursive;
             font-size: 24px;
             color: black;
             width: 80%;
             max-width: 950px;
-            margin: 15px auto 0 auto;
-            line-height: 1.4;
+            margin: 15px auto;
+            line-height: 1.5;
             text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
         }
 
         .scroll-message {
             margin-top: 30px;
-            font-family: 'Pacifico', cursive;
             font-size: 22px;
-            color: black;
-            text-shadow: 1px 1px 4px rgba(255,255,255,0.8);
         }
 
         .page {
@@ -75,16 +71,33 @@
         }
 
         .page h2 {
-            font-family: 'Pacifico', cursive;
             font-size: 60px;
-            color: black;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 6px rgba(255,255,255,0.8);
+            margin-bottom: 20px;
         }
 
-        .page p {
-            font-size: 24px;
-            max-width: 900px;
+        .hack-card {
+            background: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .hack-card:hover {
+            transform: scale(1.03);
+        }
+
+        .hack-title {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .hack-content {
+            display: none;
+            font-size: 22px;
             line-height: 1.5;
         }
     </style>
@@ -92,97 +105,78 @@
 
 <body>
 
-    <!-- HOME PAGE -->
-
+    <!-- HOME -->
     <section class="page">
-
         <h1>Beauty Bestie 💕</h1>
 
         <p>
-            Hi my name is Willow!! I love makeup and everything beauty, like clothes, skincare and much much more!!! But the question is what are the cheap hacks that are great if you don't have the right equipment?? Well that's where I come in!!! This website is completely free and full of fun hacks! Feel free to leave a comment on my Github account, my name is Beauty-bestie! I can't wait to help you! 💕
+            Hi my name is Willow!! I love makeup, skincare, clothes and everything beauty 💕
+            This website is full of fun, cheap beauty hacks you can try at home!
         </p>
 
         <div class="scroll-message">
-            ⬇ Scroll down to discover all my favourite beauty hacks! 💕
+            ⬇ Scroll down to discover beauty hacks 💕
         </div>
-
     </section>
 
     <!-- MAKEUP -->
-
     <section class="page">
-
         <h2>💄 Makeup Hacks 💄</h2>
-
-        <p>
-            Write all of your amazing makeup hacks here!
-        </p>
-
+        <p>Write all of your amazing makeup hacks here!</p>
     </section>
 
     <!-- SKINCARE -->
-
     <section class="page">
-
         <h2>🧴 Skincare 🧴</h2>
 
-        <p>
-            Add your favourite skincare tips and routines here!
-        </p>
+        <div class="hack-card" onclick="toggleHack(this)">
+            <div class="hack-title">🥒 Cucumber Eye De-Puff Hack</div>
 
+            <div class="hack-content">
+                Take a fresh cucumber and blend or grate it into a soft paste.
+                Put it into a clean lipstick case or small container and chill it in the fridge.
+
+                When cold, apply it gently under your eyes.
+                The cooling effect reduces puffiness and helps refresh tired eyes.
+
+                With regular use, it can help reduce the appearance of eye bags and soothe the skin 💕
+            </div>
+        </div>
     </section>
 
     <!-- HAIRCARE -->
-
     <section class="page">
-
         <h2>💇‍♀️ Haircare 💇‍♀️</h2>
-
-        <p>
-            Share your haircare tips and hacks here!
-        </p>
-
+        <p>Share your haircare tips and hacks here!</p>
     </section>
 
     <!-- FASHION -->
-
     <section class="page">
-
         <h2>👗 Fashion 👗</h2>
-
-        <p>
-            Add clothing ideas, outfit inspiration and fashion hacks here!
-        </p>
-
+        <p>Add clothing ideas, outfit inspiration and fashion hacks here!</p>
     </section>
 
     <!-- NAILS -->
-
     <section class="page">
-
         <h2>💅 Nails 💅</h2>
-
-        <p>
-            Add your nail ideas and hacks here!
-        </p>
-
+        <p>Add your nail ideas and hacks here!</p>
     </section>
 
-    <!-- EXTRA BEAUTY -->
-
+    <!-- EXTRA -->
     <section class="page">
-
         <h2>✨ More Beauty Tips ✨</h2>
-
-        <p>
-            Add any extra beauty hacks you'd like to share here!
-        </p>
-
+        <p>Add any extra beauty hacks you'd like to share here!</p>
     </section>
+
+    <!-- JS -->
+    <script>
+        function toggleHack(card) {
+            const content = card.querySelector(".hack-content");
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+    </script>
 
 </body>
-
 </html>
-       
  
 
