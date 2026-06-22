@@ -50,3 +50,124 @@ c.style.display=c.style.display==='block'?'none':'block';
 }
 </script>
 </body></html>
+<section class="page" id="hair">
+
+<h2>💇‍♀️ Haircare 💇‍♀️</h2>
+
+<div class="click-hint">
+⬇ Click on the cards below!
+</div>
+
+<p>
+Share your haircare tips here!
+</p>
+
+</section>
+
+<section class="page" id="fashion">
+
+<h2>👗 Fashion 👗</h2>
+
+<div class="click-hint">
+⬇ Click on the cards below!
+</div>
+
+<p>
+Outfit ideas and fashion hacks here!
+</p>
+
+</section>
+
+<section class="page" id="nails">
+
+<h2>💅 Nails 💅</h2>
+
+<div class="click-hint">
+⬇ Click on the cards below!
+</div>
+
+<p>
+Nail ideas here!
+</p>
+
+</section>
+
+<section class="page" id="extra">
+
+<h2>✨ More Beauty Tips ✨</h2>
+
+<div class="click-hint">
+⬇ Click on the cards below!
+</div>
+
+<p>
+Extra hacks here!
+</p>
+
+</section>
+
+<section class="page" id="comments">
+
+<h2>💬 Comments & Feedback 💬</h2>
+
+<div class="click-hint">
+Send your feedback 💕
+</div>
+
+<div class="hack-card" style="cursor:default;">
+
+<form action="https://formspree.io/f/mvzjpwrd" method="POST">
+
+<input
+name="name"
+placeholder="Your name"
+required
+style="width:100%;padding:10px;margin-bottom:10px;">
+
+<select
+name="rating"
+required
+style="width:100%;padding:10px;margin-bottom:10px;">
+
+<option>⭐⭐⭐⭐⭐ Amazing</option>
+<option>⭐⭐⭐⭐ Great</option>
+<option>⭐⭐⭐ Good</option>
+<option>⭐⭐ Okay</option>
+<option>⭐ Needs improvement</option>
+
+</select>
+
+<textarea
+name="comment"
+rows="5"
+placeholder="Write your feedback..."
+required
+style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
+
+<button type="submit">
+Send 💕
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<script>
+
+function toggleHack(card){
+
+const content = card.querySelector('.hack-content');
+
+content.style.display =
+content.style.display === 'block'
+? 'none'
+: 'block';
+
+}
+
+</script>
+
+</body>
+</html>
